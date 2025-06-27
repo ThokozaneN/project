@@ -1,0 +1,241 @@
+:root {
+            --primary: #0f172a;
+            --secondary: #1e293b;
+            --accent: #7c3aed;
+            --text: #e2e8f0;
+            --highlight: #fbbf24;
+        }
+
+        [data-theme="light"] {
+            --primary: #f8fafc;
+            --secondary: #e2e8f0;
+            --accent: #7c3aed;
+            --text: #0f172a;
+            --highlight: #d97706;
+        }
+
+        /* Custom Styles */
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slide-in-left {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slide-in-right {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .animate-fade-in { animation: fade-in 1s ease forwards; }
+        .animate-slide-in-left { animation: slide-in-left 1s ease forwards; }
+        .animate-slide-in-right { animation: slide-in-right 1s ease forwards; }
+        .animate-bounce { animation: bounce 2s infinite; }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .animate-spin-slow { animation: spin 8s linear infinite; }
+        .animate-pulse-slow { animation: pulse 3s ease infinite; }
+
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+
+        body {
+            background-color: var(--primary);
+            color: var(--text);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+
+        .bg-accent {
+            background-color: var(--accent);
+        }
+
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .text-highlight {
+            color: var(--highlight);
+        }
+
+        .parallax-background {
+            background-image: url('images/file_00000000aa2061f787879d10719bb262.png');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .skill-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(124, 58, 237, 0.4);
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .project-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(124, 58, 237, 0.4);
+        }
+
+        .tech-badge {
+            transition: all 0.3s ease;
+        }
+
+        .tech-badge:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+        }
+
+        .timeline {
+            border-left: 2px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        .timeline-dot {
+            left: -11px;
+            top: 5px;
+            background-color: var(--accent);
+        }
+
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Theme toggle switch */
+        .theme-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+
+        .theme-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .theme-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--secondary);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .theme-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: var(--highlight);
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .theme-slider {
+            background-color: var(--secondary);
+        }
+
+        input:checked + .theme-slider:before {
+            transform: translateX(30px);
+            background-color: var(--accent);
+        }
+
+        .theme-icon {
+            position: absolute;
+            top: 5px;
+            font-size: 1rem;
+            z-index: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .moon-icon {
+            left: 8px;
+            color: var(--text);
+        }
+
+        .sun-icon {
+            right: 8px;
+            color: var(--text);
+        }
+
+        input:checked ~ .moon-icon {
+            opacity: 0;
+        }
+
+        input:not(:checked) ~ .sun-icon {
+            opacity: 0;
+        }
+
+        /* Animated icons */
+        .icon-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .icon-spin {
+            animation: spin 6s linear infinite;
+        }
+
+        .icon-pulse {
+            animation: pulse 2s ease infinite;
+        }
+
+        .icon-bounce {
+            animation: bounce 2s infinite;
+        }
